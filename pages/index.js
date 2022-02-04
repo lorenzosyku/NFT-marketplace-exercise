@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { ThirdwebSDK } from "@3rdweb/sdk";
 import { useEffect, useState } from "react";
-//import { NFTModule, NFTMetadataOwner } from "@3rdweb/sdk";
 
 const contractAddress = "0x156cCEe877f2568FD895bDAaa6E31CBE236a08aD";
 export default function Home() {
@@ -27,7 +26,15 @@ export default function Home() {
       <h1 className="text-center text-4xl">
         Welcome Everyone To My NFT Collection!
       </h1>
-      
+
+      {nfts.map((nft) => {
+        <div className="" key={nft.metadata.id}>
+          <p>{nft.metadata.name}</p>
+          <p>{nft.metadata.description}</p>
+          <img src={nft.metadata.image} alt="" />
+          <p>Owned by: {nft.owner}</p>
+        </div>;
+      })}
     </div>
   );
 }
