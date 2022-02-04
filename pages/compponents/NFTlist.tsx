@@ -12,25 +12,27 @@ function NFTlist() {
     const initSDK = async () => {
       const sdk = new ThirdwebSDK("rinkeby");
       const nftModule: NFTModule = sdk.getNFTModule(contractAddress);
-      const nftListWithOwnerAddress: NFTMetadataOwner[] = await nftModule.getAllWithOwner();
+      const nftListWithOwnerAddress: NFTMetadataOwner[] =
+        await nftModule.getAllWithOwner();
       setNfts(nftListWithOwnerAddress);
     };
     initSDK();
-
   }, []);
 
   console.log(nfts);
 
-  return <div>
-    {nfts.map((nft) => {
+  return (
+    <div>
+      {nfts.map((nft) => (
         <div className="" key={nft.metadata.id}>
           <p>{nft.metadata.name}</p>
           <p>{nft.metadata.description}</p>
           <img src={nft.metadata.image} alt="" />
           <p>Owned by: {nft.owner}</p>
         </div>
-      })}
-  </div>;
+      ))}
+    </div>
+  );
 }
 
 export default NFTlist;
