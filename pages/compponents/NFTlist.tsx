@@ -22,13 +22,13 @@ function NFTlist() {
   console.log(nfts);
 
   return (
-    <div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:grid-cols-3 ">
       {nfts.map((nft) => (
-        <div className="" key={nft.metadata.id}>
-          <p>{nft.metadata.name}</p>
-          <p>{nft.metadata.description}</p>
-          <img src={nft.metadata.image} alt="" />
-          <p>Owned by: {nft.owner}</p>
+        <div className="shadow-lg p-5 rounded-xl m-5" key={nft.metadata.id}>
+          <p className="text-lg font-bold">{nft.metadata.name}</p>
+          <p className="text-sm">{nft.metadata.description}</p>
+          <img className="mt-5" src={nft.metadata.image} alt="" />
+          <p className="text-left italic py-2 truncate">Owned by: {nft.owner}</p>
         </div>
       ))}
     </div>
